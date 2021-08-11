@@ -13,6 +13,12 @@ function clearX(event)
 	event.target.parentElement.remove()
 }
 
+function editTodo(event)
+{
+	var editText = document.createElement('input');
+
+}
+
 function addToDoList()
 {
 	var toDoMain = document.createElement('div')
@@ -30,6 +36,7 @@ function addToDoList()
 	var todoEdit = document.createElement('div');
 	todoEdit.appendChild(document.createTextNode('Edit'));
 	toDoMain.appendChild(todoEdit);
+	todoEdit.addEventListener("click", editTodo);
 
 	var todoDone = document.createElement('div');
 	todoDone.appendChild(document.createTextNode('Done'));
