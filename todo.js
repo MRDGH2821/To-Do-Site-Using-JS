@@ -1,6 +1,7 @@
 var addButton = document.getElementById("addButton");
 var toDoList = document.getElementById("toDoList");
 var todoInput = document.getElementById("todoInput");
+var clearAll = document.getElementById("clearAll");
 
 function markAsDone(event)
 {
@@ -29,8 +30,13 @@ function addToDoList()
 	toDoMain.appendChild(todoDone);
 	todoDone.addEventListener("click", markAsDone);
 
-
 	toDoList.appendChild(toDoMain);
 }
 
+function deleteToDoList()
+{
+	toDoList.parentNode.removeChild(toDoList)
+}
+
 addButton.addEventListener("click", addToDoList);
+clearAll.addEventListener("click", deleteToDoList);
