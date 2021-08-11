@@ -8,6 +8,11 @@ function markAsDone(event)
 	event.target.parentElement.classList.add("markAsDone")
 }
 
+function clearX(event)
+{
+	event.target.parentElement.remove()
+}
+
 function addToDoList()
 {
 	var toDoMain = document.createElement('div')
@@ -20,6 +25,7 @@ function addToDoList()
 	var todoX = document.createElement('div');
 	todoX.appendChild(document.createTextNode('X'));
 	toDoMain.appendChild(todoX);
+	todoX.addEventListener("click", clearX);
 
 	var todoEdit = document.createElement('div');
 	todoEdit.appendChild(document.createTextNode('Edit'));
