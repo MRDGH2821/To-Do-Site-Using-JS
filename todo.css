@@ -10,7 +10,7 @@
 
 ::selection {
   color: #ffff;
-  background: rgb(142, 73, 232);
+  background: #FF5E5B;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
   height: 100vh;
   /* overflow: hidden; */
   padding: 10px;
-  background: #FF5327;
+  background: #FF5E5B;
 }
 
 .wrapper {
