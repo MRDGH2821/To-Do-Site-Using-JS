@@ -1,55 +1,94 @@
-var addButton = document.getElementById("addButton");
-var toDoList = document.getElementById("toDoList");
-var todoInput = document.getElementById("todoInput");
-var clearAll = document.getElementById("clearAll");
+let form = document.getElementById('form');
 
-function markAsDone(event)
+let items = [];
+displayLocalStorage();
+
+form.addEventListner("submit", function(e)
 {
-	event.target.parentElement.classList.add("markAsDone")
-}
+	e.preventDefault();
 
-function clearX(event)
+	let todoInput = document.getElementById('todo-input').value;
+
+	if (todoInput === "")
+	{
+		alert("Please enter someting!");
+	}
+	else
+	{
+		displayItems(todoInput);
+
+		storeItem(todoInput);
+
+		document.getElementById("todo-input").value = "";
+		addDeleteFunction(todoInput);
+
+	}
+});
+
+function storeItem(item)
 {
-	event.target.parentElement.remove()
-}
+	items.push(item);
+	localStorage.setitem("item", JSON.stringify(items));
 
-function editTodo(event)
+};
+
+function displayItems(todoInput)
 {
-	var editText = document.createElement('input');
+	let todoItem = document.createElement('li');
+	todoItem.innerHTML = `$(todoInut)<div class='delete-item'>Delete</div>`;
+	let todoList = document.querySelector('ul');
+	todoList.appendChild(todoItem);
+};
 
-}
-
-function addToDoList()
+function displayLocalStorage()
 {
-	var toDoMain = document.createElement('div')
-	toDoMain.id = String(Math.random());
+	let storage = localStorage.getitem('item');
 
-	var todo = document.createElement('div');
-	todo.appendChild(document.createTextNode(todoInput.value));
-	toDoMain.appendChild(todo);
+	if (storage === null)
+	{
+		items = [];
+	}
+	else
+	{
+		let storgeParsedd = JSON.parse(storage);
+		storageParsed.forEach(function(storageItem)
+		{
+			displayItems(storageItem);
+		})
+	};
+};
 
-	var todoX = document.createElement('div');
-	todoX.appendChild(document.createTextNode('X'));
-	toDoMain.appendChild(todoX);
-	todoX.addEventListener("click", clearX);
-
-	var todoEdit = document.createElement('div');
-	todoEdit.appendChild(document.createTextNode('Edit'));
-	toDoMain.appendChild(todoEdit);
-	todoEdit.addEventListener("click", editTodo);
-
-	var todoDone = document.createElement('div');
-	todoDone.appendChild(document.createTextNode('Done'));
-	toDoMain.appendChild(todoDone);
-	todoDone.addEventListener("click", markAsDone);
-
-	toDoList.appendChild(toDoMain);
-}
-
-function deleteToDoList()
+function addDeleteFunction(todoInput)
 {
-	toDoList.parentNode.removeChild(toDoList)
-}
+	let deleteButton = document.querySelector('.delete-item');
 
-addButton.addEventListener("click", addToDoList);
-clearAll.addEventListener("click", deleteToDoList);
+	deleteButton.forEach(function(button, index)
+	{
+		button.addEventListner('click', function(e)
+		{
+			console.log(e.path[1].childeNodes);
+			let deleteStorage = localStorage.getItem('item');
+			let deleteStorageParsed = JSON.parsed(deleteStorage);
+			deleteStorageParsed.splice(index, 1);
+			console.log(deletedStorageParsed);
+
+			localStorage.setItem('item', JSON.stringify(deletedStorageParsed));
+
+			if (deletedStorageParsed.length === 0)
+			{
+				let todoList = document.querySelector('ul');
+				todoList.innerHTML = "";
+				let todoItem = document.createElement('li');
+				todoItem.innerHTML = 'No more ToDos!';
+
+				todoList.appendChild(todoItem);
+				displayLocalStorage();
+			}
+			else
+			{
+				localStorage.setitem('item', JSON.stringify(deleteStorageParsed));
+			}
+
+		})
+	})
+}

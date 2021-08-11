@@ -5,10 +5,6 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
-body h1 {
-  color: white;
-}
-
 form {
   background-color: white;
   width=50%;
@@ -18,6 +14,57 @@ form {
   box-sizing: border-box;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+}
+
+form h1 {
+  text-align: center;
+  color: #FF5733;
+}
+
+form input#todoInput {
+  width: 620px;
+  background: white;
+  font: inherit;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border: none;
+  outline: 0;
+  padding: 22px 10px;
+  margin-top: 10px;
+}
+
+#addButton {
+  margin-top: 10px;
+  left: -50%;
+  top: -50%;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 10px;
+  background: green;
+}
+
+ul {
+  list-style: none;
+  list-style-position: outside;
+  margin: 0;
+  padding: 25px 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.delete-item {
+  margin-top: 10px;
+  color: white
+}
+
+.delete-item:hover {
+  background-color: orange;
+  padding: 15px;
 }
 
 .markAsDone {

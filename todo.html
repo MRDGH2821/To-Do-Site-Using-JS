@@ -1,26 +1,28 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title> JS Todo List</title>
     <link rel="stylesheet" href="todo.css" />
+    <script src="todo.js"></script>
   </head>
 
-  <body align="center">
-    <h1 id=head1>My ToDo List</h1>
+  <body>
+    <form action="" id="form">
+      <h1>My ToDo List</h1>
+      <input type="text" class="form_ _field" id="todo-input" maxlength="20" placeholder="Enter Your Task"></input>
+      <button id="addButton">Add</button>
+      <button id="clearAll">Clear All</button>
+    </form>
 
-    <div class="addTodo">
-      <form action="" id="form">
-        <input id="todoInput" maxlength="20" placeholder="Enter Todo"></input>
-        <button id="addButton">Add</button>
 
-        <button id="clearAll">Clear All</button>
-      </form>
-    </div>
+    <ul id="toDoList">
 
-    <div id="toDoList">
+    </ul>
 
-    </div>
 
-    <script src="todo.js"></script>
   </body>
 
 </html>
